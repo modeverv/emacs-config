@@ -1,13 +1,13 @@
 (require 'auto-complete)
 
-(defvar ac-gtags-modes
-  '(c-mode cc-mode c++-mode java-mode))
+;;(defvar ac-gtags-modes
+;;  '(c-mode cc-mode c++-mode java-mode))
 
 (defun ac-gtags-candidate ()
   (if (memq major-mode ac-gtags-modes)
       (ignore-errors
         (with-temp-buffer
-          (when (eq (call-process "global" nil t nil "-ci" ac-prefix) 0)
+          (when (eq (call-process "global" nil t nil "-ciq" ac-prefix) 0)
             (goto-char (point-min))
             (let (candidates)
               (while (and (not (eobp))
